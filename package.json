@@ -1,0 +1,75 @@
+{
+  "name": "finaldesktopapp",
+  "version": "2.0.0",
+  "description": "A Desktop App using the AppAuth-JS security library",
+  "main": "main.bundle.js",
+  "scripts": {
+    "lint": "npx eslint . --ext .ts,.tsx",
+    "buildnative": "node_modules/.bin/electron-rebuild",
+    "build": "npm run clean && npm run buildMainDev && npm run buildRendererDev && npm run copypreload",
+    "clean": "rimraf dist && copyfiles index.html desktop*.json css/* package.json dist",
+    "buildMainDev": "webpack --config webpack/webpack.config.main.dev.js",
+    "buildMainProd": "webpack --config webpack/webpack.config.main.prod.js",
+    "buildRendererDev": "webpack --config webpack/webpack.config.renderer.dev.js",
+    "buildRendererProd": "webpack --config webpack/webpack.config.renderer.prod.js",
+    "copypreload": "copyfiles -u 1 src/preload.js dist",
+    "start": "node_modules/.bin/electron ./dist",
+    "buildRelease": "npm run clean && npm run buildMainProd && npm run buildRendererProd && npm run copypreload",
+    "pack": "npm run buildRelease && rimraf package && electron-packager ./dist --out=package"
+  },
+  "build": {
+    "protocols": {
+      "name": "finaldesktopapp",
+      "schemes": [
+        "x-mycompany-desktopapp"
+      ]
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "keywords": [],
+  "author": "Gary Archer",
+  "license": "MIT",
+  "dependencies": {
+    "@openid/appauth": "^1.3.0",
+    "axios": "^0.21.1",
+    "electron-default-menu": "^1.0.2",
+    "electron-log": "^4.3.0",
+    "fs-extra": "^9.0.1",
+    "guid-typescript": "^1.0.9",
+    "keytar": "^7.7.0",
+    "moment": "2.24.0",
+    "opener": "^1.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-modal": "^3.12.1",
+    "react-router-dom": "^5.2.0",
+    "url-parse": "^1.5.1",
+    "username": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.4",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-modal": "^3.10.6",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/url-parse": "^1.4.3",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "copyfiles": "^2.3.0",
+    "electron": "12.0.8",
+    "electron-packager": "^15.2.0",
+    "electron-rebuild": "^2.3.2",
+    "eslint": "^7.15.0",
+    "eslint-plugin-react": "^7.21.5",
+    "node-loader": "^1.0.2",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.2.2",
+    "webpack": "^5.8.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-merge": "^5.4.0"
+  }
+}

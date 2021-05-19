@@ -1,0 +1,11 @@
+# This is used to register the Private URI Scheme in the Linux Gnome desktop environment
+# Copy this file to ~/.local/share/applications and adjust the parameters as required
+
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Final Desktop App
+Comment=OAuth Private URI Scheme Sample Application
+Exec=/home/gary/projects/oauth.desktopsample.final/package/finaldesktopapp-linux-x64/finaldesktopapp %U
+Terminal=false
+MimeType=text/html;x-scheme-handler/x-mycompany-desktopapp

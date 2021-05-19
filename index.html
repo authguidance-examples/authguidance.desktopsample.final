@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>OAuth Demo App</title>
+
+        <meta http-equiv='Content-Security-Policy'
+            content="default-src 'none';
+                     script-src 'self';
+                     connect-src 'self' https://api.authsamples.com https://login.authsamples.com https://cognito-idp.eu-west-2.amazonaws.com;
+                     img-src 'self';
+                     style-src 'self';
+                     object-src 'none';">
+
+        <link rel='stylesheet' href='css/bootstrap.min.css'>
+        <link rel='stylesheet' href='css/app.css'>
+    </head>
+    <body>
+        <div id='root' class='container'></div>
+
+        <script type='module' src='vendor.bundle.js'></script>
+        <script type='module' src='app.bundle.js'></script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+{
+    // See the below guide for debug settings
+    // https://github.com/microsoft/vscode-recipes/tree/master/Electron
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Main Process",
+            "protocol": "inspector",
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+            "runtimeArgs": [
+                "--remote-debugging-port=9223",
+                "./dist"
+            ],
+            "windows": {
+				"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+            },
+            "sourceMaps": true,
+            "sourceMapPathOverrides":{
+                "webpack:///./*": "${workspaceRoot}/src/*"
+            }
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Renderer Process",
+            "port": 9223,
+            "webRoot": "${workspaceRoot}/src",
+            "timeout": 30000,
+            "sourceMaps": true,
+            "sourceMapPathOverrides":{
+                "webpack:///./*": "${webRoot}/*"
+            }
+        }
+    ],
+    // Run the compound statement to attach to debug both sides of the app at once
+    "compounds": [
+        {
+            "name": "Debug Desktop App",
+            "configurations": [
+                "Main Process",
+                "Renderer Process"
+            ]
+        }
+    ]
+}

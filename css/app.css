@@ -1,0 +1,49 @@
+.row
+{
+    margin-top: 5px;
+}
+.listRow
+{
+    height: 80px;
+}
+.valuecolor
+{
+    color: blue;
+}
+.highlightcolor
+{
+    color:green;
+}
+.signingincolor
+{
+    color:green;
+}
+.errorcolor
+{
+    color:red;
+}
+.errorlinecolor
+{
+    color:darkblue;
+}
+.largetext
+{
+    font-size: larger;
+}
+.sessionid
+{
+    margin-top: 10px;
+}
+.loginrequired
+{
+    margin-top: 20px;
+}
+
+/* Reduce browser text size when the view is reduced, so that text fits */
+@media all and (max-width: 992px)
+{
+    body
+    {
+        font-size: 0.85em;
+    }
+}
